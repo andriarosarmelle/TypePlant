@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${plante.id} ? 'Modifier Plante' : 'Ajouter Plante'"></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${plante.id} ? 'Modifier Plante' : 'Ajouter Plante'"></h1>
+    <form th:object="${plante}" th:action="@{/plantes}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label>Nom</label>
+            <input type="text" th:field="*{nom}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Couleurs</label>
+            <input type="text" th:field="*{couleurs}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="number" th:field="*{nombre}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Période d'arrosage (jours)</label>
+            <input type="number" th:field="*{periodeArrosage}" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+        <a href="/plantes" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
+</body>
+</html>
