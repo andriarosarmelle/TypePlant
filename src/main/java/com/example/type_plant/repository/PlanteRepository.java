@@ -1,11 +1,10 @@
 package com.example.type_plant.repository;
 
-public interface PlanteRepository {
+import com.example.type_plant.model.Plante;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-    // Define methods for interacting with the plant data
-    // For example:
-    // List<Plante> findAll();
-    // Plante findById(Long id);
-    // void save(Plante plante);
-    // void deleteById(Long id);
+@Repository
+public interface PlanteRepository extends JpaRepository<Plante, Long> {
+    
 }
