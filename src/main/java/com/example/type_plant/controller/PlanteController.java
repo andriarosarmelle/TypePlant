@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.type_plant.model.Plante;
 import com.example.type_plant.service.PlanteService;
+
 @Controller
 @RequestMapping("/plantes")
 public class PlanteController {
@@ -23,7 +24,7 @@ public class PlanteController {
         return "plantes/list";  
     }
 
-    @GetMapping("/new")    
+    @GetMapping("/new")   
     public String newPlanteForm(Model model) {
         model.addAttribute("plante", new Plante());
         return "plantes/form";  
