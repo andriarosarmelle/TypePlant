@@ -1,12 +1,16 @@
 package com.example.type_plant.controller;
 
-import com.example.type_plant.model.Plante;
-import com.example.type_plant.service.PlanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.type_plant.model.Plante;
+import com.example.type_plant.service.PlanteService;
 @Controller
 @RequestMapping("/plantes")
 public class PlanteController {
@@ -16,13 +20,13 @@ public class PlanteController {
     @GetMapping
     public String listPlantes(Model model) {
         model.addAttribute("plantes", planteService.getAllPlantes());
-        return "plante/list";
+        return "plantes/list";  
     }
 
     @GetMapping("/new")    
     public String newPlanteForm(Model model) {
         model.addAttribute("plante", new Plante());
-        return "form";     
+        return "plantes/form";  
     }
 
     @PostMapping
@@ -35,7 +39,7 @@ public class PlanteController {
     public String editPlanteForm(@PathVariable Long id, Model model) {
         model.addAttribute("plante", planteService.getPlanteById(id)
             .orElseThrow(() -> new IllegalArgumentException("Invalid plant ID: " + id)));
-        return "form";  
+        return "plantes/form";  
     }
 
     @GetMapping("/delete/{id}")
